@@ -10,3 +10,4 @@ Go Redis Calculator
 - curl localhost:8000/minus -H 'content-type:application/json' -d '{"setter":5, "action":5}' -X GET
 - curl localhost:8000/multiply -H 'content-type:application/json' -d '{"setter":5, "action":5}' -X GET
 - curl localhost:8000/divide -H 'content-type:application/json' -d '{"setter":5, "action":5}' -X GET
+- curl localhost:8000/calculate -H 'content-type:application/json' -d '{"operator": "+","num1":5,"num2":5}' -X GET
