@@ -20,24 +20,7 @@ func NewCalculate(redisClint *redis.Client) CalculateOneService {
 
 func (s calculate) Calculate(cal Calculate) (result float64, err error) {
 
-	var key string
-
-	switch cal.Operator {
-	case "+":
-		key = fmt.Sprintf("plus::%v+%v", cal.Number1, cal.Number2)
-		result = cal.Number1 + cal.Number2
-	case "-":
-		key = fmt.Sprintf("minus::%v-%v", cal.Number1, cal.Number2)
-		result = cal.Number1 - cal.Number2
-	case "*":
-		key = fmt.Sprintf("multi::%v*%v", cal.Number1, cal.Number2)
-		result = cal.Number1 * cal.Number2
-	case "/":
-		key = fmt.Sprintf("divide::%v/%v", cal.Number1, cal.Number2)
-		result = cal.Number1 / cal.Number2
-	default:
-		return 0, errs.ErrOperatorNotFound()
-	}
+	key := fmt.Sprintf("cal::%v%v%v", cal.Number1, cal.Operator, cal.Number2)
 
 	// Redis
 	fmt.Println(key)
@@ -46,6 +29,19 @@ func (s calculate) Calculate(cal Calculate) (result float64, err error) {
 			fmt.Println("check unmarshal")
 			return result, nil
 		}
+	}
+
+	switch cal.Operator {
+	case "+":
+		result = cal.Number1 + cal.Number2
+	case "-":
+		result = cal.Number1 - cal.Number2
+	case "*":
+		result = cal.Number1 * cal.Number2
+	case "/":
+		result = cal.Number1 / cal.Number2
+	default:
+		return 0, errs.ErrOperatorNotFound()
 	}
 
 	// Set Redis
