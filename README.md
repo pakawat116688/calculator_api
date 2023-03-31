@@ -22,7 +22,7 @@ Service Calulator ของเรานั้นจะทำการเชื�
 - พิมพ์ Kubectl get service -n test-dev แล้วดูว่า service ของ Calculator เปิด Port อะไร
 
 <p align="center">
-  <img src="./images/kubernetes-calculator_API.jpg)">
+  <img src="/images/kubernetes-calculator_API.jpg)">
 </p>
 
 # curl
