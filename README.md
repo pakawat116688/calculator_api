@@ -21,7 +21,9 @@ Service Calulator ของเรานั้นจะทำการเชื�
 - ทำการ Deploy Calculator ลงไปใน Kubenetes โดยมี Service Type=NodePort
 - พิมพ์ Kubectl get service -n test-dev แล้วดูว่า service ของ Calculator เปิด Port อะไร
 
+<center>
 ![](./images/kubernetes-calculator_API.jpg)
+</center>
 
 # curl
 - curl localhost:{port-calculator-service}/plus -H 'content-type:application/json' -d '{"setter":5, "action":5}' -X GET
