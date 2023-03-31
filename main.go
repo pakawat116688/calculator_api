@@ -10,7 +10,7 @@ import (
 func main()  {
 
 	myRedis := redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr: "10.102.226.140:6379",
 	})
 
 	redisSrv := service.NewCalculatorRedis(myRedis)

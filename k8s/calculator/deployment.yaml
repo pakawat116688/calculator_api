@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculater-deployment
+  namespace: test-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-golang
+  template:
+    metadata:
+      labels:
+        app: app-golang
+    spec:
+      containers:
+      - name: go-calculater
+        image: calculator:go-dev
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
